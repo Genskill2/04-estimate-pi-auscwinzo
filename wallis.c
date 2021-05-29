@@ -2,25 +2,29 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include<cs50.h>
 
-float wallis_pi(int);
+//float wallis_pi(int);
+float Wallis_pi(int n){
+    float k=1;
 
-int main(void) {
-  float pi;
-  for (int i=0; i<5; i++) {
-    pi = wallis_pi(i);
-    if (!(fabs(pi - M_PI) > 0.15)) {
-      printf("Estimate with just %d iterations is %f which is too accurate.\n", i, pi);
-      abort();
+   while(n>=1){
+         k=((float)(4*n*n)/(4*n*n-1))*k;
+         n--;
+         
+         
+
+        
+
     }
-  }
 
-  for (int i=500; i<3000; i++) {
-    pi = wallis_pi(i);
-    if (!(fabs(pi - M_PI) < 0.01)) {
-      printf("Estimate with even %d iterations is %f which is not accurate enough.\n", i, pi);
-      abort();
-    }
-  }
+    
+
 }
 
+int main(){
+  int j=get_int("enter the value of n:");
+  float i= Wallis_pi(j);
+  printf("%f",i*2);
+
+}
